@@ -232,6 +232,41 @@ $("document").ready
             }
         );
 
+        $("#companySelect").change
+        (
+            function()
+            {
+                var companyID = $("#companySelect").val();
+                $.ajax
+                (
+                    {
+                        "method":"POST",
+                        "url":"script/getCompany.php",
+                        "data":
+                        {
+                            "id":companyID
+                        }
+                    }
+                ).done
+                (
+                    function(data)
+                    {
+                        var result = JSON.parse(data);
+                        var companyTable = "<tr><th>Company Name</th>" + 
+                                "<th>Description</th><th>Contact Info</th>" +
+                                "</tr>";
+                        companyTable = companyTable + "<tr><td>" + 
+                                result.info.companyName + "</td><td>" +
+                                result.info.companyDescription + "</td><td>" +
+                                result.info.companyContactInfo + "</td></tr>";
+                        $("#viewCompanyInfo").html(companyTable);
+                                
+                    }
+                );
+            }
+        );
+
+
         // Add Page
         
         $("#addType").change(loadAddPage);
@@ -468,6 +503,8 @@ function loadViewPage()
     $("#additionalInfo").hide();
     $("#billListDiv").hide();
     $("#viewAccountDiv").hide();
+    $("#viewCompanyDiv").hide();
+    $("#viewRecipientDiv").hide();
     
     switch($("#viewType").val())
     {
@@ -478,6 +515,14 @@ function loadViewPage()
             
         case "account":
             $("#viewAccountDiv").show();
+            break;
+            
+        case "company":
+            $("#viewCompanyDiv").show();
+            break;
+            
+        case "recipient":
+            $("#viewRecipientDiv").show();
             break;
     }
 
