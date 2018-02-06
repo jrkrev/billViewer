@@ -1,0 +1,89 @@
+body
+{
+    font-family: sans-serif;
+    margin:0;
+    padding:0;
+}
+
+select
+{
+    margin-bottom:1em;
+}
+
+.navigation
+{
+    background-color: black;
+    overflow: hidden;
+}
+
+.navigation a
+{    
+    float: left;
+    padding: 1em;
+    text-decoration:none;
+    text-align:center;
+    color: ivory;
+}
+
+.navigation a:hover
+{
+    color: black;
+    background-color: orange;
+}
+
+.mainDiv
+{
+    float:left;
+    width:30em;
+    padding:0.2em;
+    padding-left:2em;
+    margin:0.5em;
+    border:4px double black;
+    overflow:auto;
+}
+
+.billList
+{
+    float:left;
+    width:30em;
+    padding:0.2em;
+    padding-left:2em;
+    margin:0.5em;
+    border:4px double black;
+    overflow:auto;
+}
+
+table
+{
+    padding:0.1em;
+    text-align: center;
+}
+
+.additionalInfo
+{
+    float:left;
+    width:20em;
+    padding:0.2em;
+    padding-left:2em;
+    margin:0.5em;
+    border:4px double black;
+
+}
+
+table
+{
+    margin-bottom:2em;
+
+}
+
+tr, th, td
+{
+    padding-left:0.1em;
+    padding-right:0.1em;
+    white-space: nowrap;
+}
+
+#inputError
+{
+    color:red;
+}
