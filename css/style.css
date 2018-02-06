@@ -42,7 +42,7 @@ select
     overflow:auto;
 }
 
-.billList
+#billList
 {
     float:left;
     width:30em;
@@ -59,7 +59,7 @@ table
     text-align: center;
 }
 
-.additionalInfo
+#additionalInfo
 {
     float:left;
     width:20em;
