@@ -91,6 +91,54 @@
         </table>
         </div>
         
+        
+        <!-- View Company Div -->
+        
+        <div id="viewCompanyDiv" style="display:none">
+        <h3>Select Company</h3>
+        <select id="companySelect">
+        <option disabled selected>Select Company</option>
+        
+        <?php
+        $query = $db->query("SELECT companyID, companyName, "
+                        . "companyDescription, "
+                        .   "companyContactInfo FROM company");
+        while($row = $query->fetch())
+        {
+            echo "<option value=" . $row["companyID"] . ">" 
+                    . $row["companyName"] . "</option>";
+        }
+        ?>
+        </select>
+        <table border =1 id="viewCompanyInfo">
+            <tr>
+                <th>Company Name</th>
+                <th>Description</th> 
+                <th>Contact Info</th>
+            </tr>
+        </table>
+        </div>
+        
+        <!-- View Recipient Div -->
+        
+        <div id="viewRecipientDiv" style="display:none">
+        <h3>View Recipients</h3>
+        <select id="recipientSelect">
+        <option disabled selected>List of Recipients</option>
+        
+        <?php
+        $query = $db->query("SELECT recipientFirstName, "
+                        . "recipientLastName FROM recipient");
+        while($row = $query->fetch())
+        {
+            echo "<option>" . $row["recipientFirstName"] . " " 
+                    . $row["recipientLastName"] . "</option>";
+        }
+        ?>
+        </select>
+        </div>
+        
+        
         </div>
         
         
