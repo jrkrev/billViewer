@@ -20,6 +20,19 @@
             $db = new PDO($connection, $user, $pwd);
         ?>
         <div class="mainDiv">
+            
+        <h3>Select View Type</h3>
+        <select id="viewType">
+            <option disabled selected>Select View Type</option>
+            <option value="recipient">View Recipient</option>
+            <option value="company">View Company</option>
+            <option value="account">View Account</option>
+            <option value="bill">View Bill</option>
+        </select>    
+        
+        <!-- View Bill Div -->
+        
+        <div id="viewBillDiv" style="display:none">
         <h3>Select Bill</h3>
         <select id="billSelect">
         <option disabled selected>Select Bill</option>
@@ -46,7 +59,43 @@
                 <th>Notes</th></tr>
         </table>
         </div>
-        <div class="additionalInfo">
+        
+        <!-- View Account Div -->
+        
+        <div id="viewAccountDiv" style="display:none">
+        <h3>Select Account</h3>
+        <select id="accountSelect">
+        <option disabled selected>Select Account</option>
+        
+        <?php
+        $query = $db->query("SELECT accountID, accountNumber, companyName, "
+                        .   "recipientFirstName, recipientLastName "
+                        .   "FROM account a JOIN company c ON "
+                        .   "a.companyID = c.companyID JOIN recipient r ON "
+                        .   "a.recipientID = r.recipientID");
+        while($row = $query->fetch())
+        {
+            echo "<option value=" . $row["accountID"] . ">" 
+                    . $row["companyName"] . " - " . $row["accountNumber"]
+                    . " (" . $row["recipientFirstName"] . " " 
+                    . $row["recipientLastName"] . ")</option>";
+        }
+        ?>
+        </select>
+        <table border =1 id="viewAccountInfo">
+            <tr>
+                <th>Company</th>
+                <th>Account Number</th> 
+                <th>Recipient</th>
+                <th>Notes</th></tr>
+        </table>
+        </div>
+        
+        </div>
+        
+        
+        
+        <div id="additionalInfo" style="display:none">
             <h3>Account Statistics</h3>
             <p>
             <label>From : </label>
@@ -66,8 +115,9 @@
             </button>
          </div>
         
-        <div class="billList" style="display:none">
+        <div id="billListDiv" style="display:none">
             <table border="1" id="billList"></table>
         </div>
+        
     </body>
 </html>
