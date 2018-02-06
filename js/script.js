@@ -8,6 +8,8 @@ $("document").ready
     { 
         // View Page
         
+        $("#viewType").change(loadViewPage);
+        
         $.ajax({"method":"POST", "url":"script/getDates.php"}).done
         (
             function(data)
@@ -22,7 +24,7 @@ $("document").ready
         (
             function()
             {
-                $(".billList").hide();
+                $("#billListDiv").hide();
                 var billID = $("#billSelect").val();
                 $.ajax
                 (
@@ -66,7 +68,7 @@ $("document").ready
                         $("#latestDate").val(result.now);
                     }     
                 );
-                setTimeout
+                setTimeout  // Fixes a bug where info was not displaying.
                 (
                     function()
                     {
@@ -90,7 +92,6 @@ $("document").ready
                         (
                             function(data)
                             {
-
                                 var result = JSON.parse(data);
                                 $("#billCount").val(result.count._count);
                                 $("#billSum").val(result.sum._sum);
@@ -165,7 +166,7 @@ $("document").ready
                     function(data)
                     {
                         var result = JSON.parse(data);
-                        $(".billList").show();
+                        $("#billListDiv").show();
                         $("#billList").html("");
                         
                         var billList = "<tr><th colspan=\"2\">";
@@ -191,6 +192,42 @@ $("document").ready
                         
                     }
                     
+                );
+            }
+        );
+
+        $("#accountSelect").change
+        (
+            function()
+            {
+                var accountID = $("#accountSelect").val();
+                $.ajax
+                (
+                    {
+                        "method":"POST",
+                        "url":"script/getAccount.php",
+                        "data":
+                        {
+                            "id":accountID
+                        }
+                    }
+                ).done
+                (
+                    function(data)
+                    {
+                        var result = JSON.parse(data);
+                        var accountTable = "<tr><th>Company</th>" + 
+                                "<th>Account Number</th><th>Recipient</th>" +
+                                "<th>Notes</th></tr>";
+                        accountTable = accountTable + "<tr><td>" + 
+                                result.info.companyName + "</td><td>" +
+                                result.info.accountNumber + "</td><td>" +
+                                result.info.recipientFirstName + " " +
+                                result.info.recipientLastName + "</td><td>" +
+                                result.info.accountNote + "</td></tr>";
+                        $("#viewAccountInfo").html(accountTable);
+                                
+                    }
                 );
             }
         );
@@ -423,6 +460,27 @@ function resetAddInputs()
     $("#billAmount").val("");
     $("#billDate").val("");
     $("#billNote").val("");
+}
+
+function loadViewPage()
+{
+    $("#viewBillDiv").hide();
+    $("#additionalInfo").hide();
+    $("#billListDiv").hide();
+    $("#viewAccountDiv").hide();
+    
+    switch($("#viewType").val())
+    {
+        case "bill":
+            $("#viewBillDiv").show();
+            $("#additionalInfo").show();
+            break;
+            
+        case "account":
+            $("#viewAccountDiv").show();
+            break;
+    }
+
 }
 
 function loadAddPage()
