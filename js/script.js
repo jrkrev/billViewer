@@ -440,6 +440,10 @@ $("document").ready
             }
         );
         
+        // Delete Page
+        
+        $("#deleteType").change(loadDeletePage);
+        
         $("#deleteBillButton").click
         (
             function()
@@ -591,6 +595,34 @@ function loadAddPage()
             $("#addBillDiv").show();
             break;
     }
+}
+
+function loadDeletePage()
+{
+    $("#deleteBillDiv").hide();
+    $("#deleteAccountDiv").hide();
+    $("#deleteCompanyDiv").hide();
+    $("#deleteRecipientDiv").hide();
+
+    switch($("#deleteType").val())
+    {
+        case "bill":
+            $("#deleteBillDiv").show();
+            break;
+            
+        case "account":
+            $("#deleteAccountDiv").show();
+            break;
+            
+        case "company":
+            $("#deleteCompanyDiv").show();
+            break;
+            
+        case "recipient":
+            $("#deleteRecipientDiv").show();
+            break;
+    }
+    
 }
 
 function isValidAmount(value)
