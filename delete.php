@@ -127,6 +127,7 @@
         
         <div id ="deletedMessage" style="display:none">
         <p>Deleted.</p>
+        <a href="delete.php"><button type="button">Okay</button></a>
         </div>
         </div>
     </body>

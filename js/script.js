@@ -465,14 +465,122 @@ $("document").ready
                     (
                         function()
                         {
-                            $("#deleteMenu").hide();
-                            $("#deletedMessage").show();
+                            loadDeletedMessage();
                         }
                     );
                 }
             }
             
         );
+
+        $("#deleteAccountButton").click
+        (
+            function()
+            {
+                var accountDeleteID = $("#accountDeleteID").val();
+                if(accountDeleteID)
+                {
+                    $.ajax
+                    (
+                        {
+                            "method":"POST",
+                            "url":"script/deleteAccount.php",
+                            "data":
+                            {
+                                "accountID":accountDeleteID
+                            }
+                        }
+                    ).done
+                    (
+                        function(data)
+                        {
+                            if(data==1)
+                            {
+                                loadDeletedMessage();
+                            }
+                            else
+                            {
+                                alert("could not delete account");
+                            }
+                        }
+                    );
+                }
+            }
+            
+        );
+
+        $("#deleteCompanyButton").click
+        (
+            function()
+            {
+                var companyDeleteID = $("#companyDeleteID").val();
+                if(companyDeleteID)
+                {
+                    $.ajax
+                    (
+                        {
+                            "method":"POST",
+                            "url":"script/deleteCompany.php",
+                            "data":
+                            {
+                                "companyID":companyDeleteID
+                            }
+                        }
+                    ).done
+                    (
+                        function(data)
+                        {
+                            if(data==1)
+                            {
+                                loadDeletedMessage();
+                            }
+                            else
+                            {
+                                alert("could not delete company");
+                            }
+                        }
+                    );
+                }
+            }
+            
+        );
+
+        $("#deleteRecipientButton").click
+        (
+            function()
+            {
+                var recipientDeleteID = $("#recipientDeleteID").val();
+                if(recipientDeleteID)
+                {
+                    $.ajax
+                    (
+                        {
+                            "method":"POST",
+                            "url":"script/deleteRecipient.php",
+                            "data":
+                            {
+                                "recipientID":recipientDeleteID
+                            }
+                        }
+                    ).done
+                    (
+                        function(data)
+                        {
+                            if(data==1)
+                            {
+                                loadDeletedMessage();
+                            }
+                            else
+                            {
+                                alert("could not delete recipient");
+                            }
+                        }
+                    );
+                }
+            }
+            
+        );
+
     }
 );
 
@@ -623,6 +731,15 @@ function loadDeletePage()
             break;
     }
     
+}
+
+function loadDeletedMessage()
+{  
+    $("#deletedMessage").show();  
+    $("#deleteBillDiv").hide();
+    $("#deleteAccountDiv").hide();
+    $("#deleteCompanyDiv").hide();
+    $("#deleteRecipientDiv").hide();
 }
 
 function isValidAmount(value)
