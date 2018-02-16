@@ -65,7 +65,7 @@ $("document").ready
                         $("#viewBillInfo").html(billTableData);
                         
                         $("#earliestDate").val(result.date.earliest);
-                        $("#latestDate").val(result.now);
+                        $("#latestDate").val(result.latest.latest);
                     }     
                 );
                 setTimeout  // Fixes a bug where info was not displaying.
@@ -104,7 +104,7 @@ $("document").ready
             }
         );
 
-        $("#earliestDate, #lastestDate").change
+        $("#earliestDate, #latestDate").change
         (
             function()
             {

@@ -33,7 +33,19 @@ $earliestDate = $db->query("SELECT MIN(billDate) AS earliest "
                         . "FROM bill "
                         . "WHERE billID = $billID)");
 
+$latestDate = $db->query("SELECT MAX(billDate) AS latest "
+                    . "FROM bill b "
+                    . "JOIN account a "
+                    . "ON b.accountID = a.accountID "
+                    . "JOIN company c "
+                    . "ON a.companyID = c.companyID "
+                    . "WHERE a.accountID = "
+                        . "(SELECT accountID "
+                        . "FROM bill "
+                        . "WHERE billID = $billID)");
+
 $bill->date = $earliestDate->fetch();
+$bill->latest = $latestDate->fetch();
 $now = new DateTime();
 $bill->now = $now->format("Y-m-d");
 
