@@ -8,11 +8,12 @@
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script type="text/javascript" src="js/script.js"></script>
     </head>
-    <body>
+    <body background="background-1.jpeg">
         
         
         <?php
             require_once("script/structure.php");
+            CreateTitleBar();
             CreateNavigationBar();
              
         ?>

@@ -1,5 +1,10 @@
 <?php
 
+function CreateTitleBar()
+{
+    echo "<div class =\"title\">billViewer - view, add, delete bills.</div>";
+}
+
 function CreateNavigationBar()
 {
     echo    "<div class = \"navigation\">
