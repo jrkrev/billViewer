@@ -7,7 +7,6 @@ $db = new PDO($connection, $user, $pwd);
 
 $recipientID = $_POST["recipientID"];
 
-
 $query = $db->query("DELETE FROM recipient WHERE recipientID = $recipientID");
 
 if($query)

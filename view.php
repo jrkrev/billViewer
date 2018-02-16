@@ -127,11 +127,12 @@
         <option disabled selected>List of Recipients</option>
         
         <?php
-        $query = $db->query("SELECT recipientFirstName, "
+        $query = $db->query("SELECT recipientID, recipientFirstName, "
                         . "recipientLastName FROM recipient");
         while($row = $query->fetch())
         {
-            echo "<option>" . $row["recipientFirstName"] . " " 
+            echo "<option value =" . $row["recipientID"]. ">" 
+                    . $row["recipientFirstName"] . " " 
                     . $row["recipientLastName"] . "</option>";
         }
         ?>

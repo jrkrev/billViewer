@@ -496,11 +496,12 @@ $("document").ready
                         {
                             if(data==1)
                             {
+                                clearDeleteError();
                                 loadDeletedMessage();
                             }
                             else
                             {
-                                alert("could not delete account");
+                                showDeleteError();
                             }
                         }
                     );
@@ -532,11 +533,12 @@ $("document").ready
                         {
                             if(data==1)
                             {
+                                clearDeleteError();
                                 loadDeletedMessage();
                             }
                             else
                             {
-                                alert("could not delete company");
+                                showDeleteError();
                             }
                         }
                     );
@@ -568,11 +570,12 @@ $("document").ready
                         {
                             if(data==1)
                             {
+                                clearDeleteError();
                                 loadDeletedMessage();
                             }
                             else
                             {
-                                alert("could not delete recipient");
+                                showDeleteError();
                             }
                         }
                     );
@@ -593,6 +596,19 @@ function clearInputError()
 {
     $("#inputError").html("");
 }
+
+function showDeleteError()
+{
+    $("#deleteError").html("Unable to delete " + 
+            "record - record exists in other " +
+            "tables");
+}
+
+function clearDeleteError()
+{
+    $("#deleteError").html("");
+}
+
 
 function resetAddInputs()
 {
@@ -707,6 +723,7 @@ function loadAddPage()
 
 function loadDeletePage()
 {
+    $("#deleteError").html("");
     $("#deleteBillDiv").hide();
     $("#deleteAccountDiv").hide();
     $("#deleteCompanyDiv").hide();

@@ -31,6 +31,8 @@
             <option value="bill">Delete Bill</option>
         </select>    
         
+        <p id="deleteError"></p>
+        
         <!-- Delete Bill Div -->
         
         <div id ="deleteBillDiv" style="display:none">
@@ -111,11 +113,12 @@
         <option disabled selected>Select Recipient for Deletion</option>
         
         <?php
-        $query = $db->query("SELECT recipientFirstName, "
+        $query = $db->query("SELECT recipientID, recipientFirstName, "
                         . "recipientLastName FROM recipient");
         while($row = $query->fetch())
         {
-            echo "<option>" . $row["recipientFirstName"] . " " 
+            echo "<option value =" . $row["recipientID"]. ">" 
+                    . $row["recipientFirstName"] . " " 
                     . $row["recipientLastName"] . "</option>";
         }
         ?>
