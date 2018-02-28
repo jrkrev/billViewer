@@ -1,7 +1,7 @@
-DROP DATABASE IF EXISTS bdDB_;
+DROP DATABASE IF EXISTS billViewerDB;
 
-CREATE DATABASE bdDB_;
-USE bdDB_;
+CREATE DATABASE billViewerDB;
+USE billViewerDB;
 
 DROP TABLE IF EXISTS company;
 DROP TABLE IF EXISTS bill;
@@ -46,24 +46,5 @@ CREATE TABLE bill
 	FOREIGN KEY (accountID) REFERENCES account(accountID)
 );
 
-
-
--- dummy data
-
-INSERT INTO company (companyName, companyDescription) VALUES 
-("Company A", "A great company inspired by the letter A"),
-("Company B", "Another company"),
-("Company C", "A third");
-
-INSERT INTO recipient VALUES
-(NULL, "John", "Doe"),
-(NULL, "Joe", "Smith");
-
-INSERT INTO account VALUES
-(NULL, "231231-12", "no note", CURRENT_DATE, 1, 1),
-(NULL, "231322abc", "no note", CURRENT_DATE, 2, 2);
-
-INSERT INTO bill VALUES
-(NULL, 25.25, '2017-01-24', "pay this", 1),
-(NULL, 22.00, '2017-01-23', "aa", 2),
-(NULL, 40, '2017-02-08', NULL, 2);
+CREATE USER 'billViewerUser' IDENTIFIED BY 'bvPass';
+GRANT ALL ON billViewerDB.* TO 'billViewerUser';
