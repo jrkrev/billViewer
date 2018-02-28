@@ -11,14 +11,9 @@
     <body background="background-1.jpeg">
         <?php
             require_once("script/structure.php");
+            require_once("script/dbConnection.php");
             CreateTitleBar();
-            CreateNavigationBar();
-            
-            $connection = "mysql:host=localhost;dbname=bdDB_";
-            $user = "root";
-            $pwd = "mysql";
-           
-            $db = new PDO($connection, $user, $pwd);
+            CreateNavigationBar();           
         ?>
         
         <div class="mainDiv">

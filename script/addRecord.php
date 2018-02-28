@@ -1,12 +1,8 @@
 <?php
 
-$connection = "mysql:host=localhost;dbname=bdDB_";
-$user = "root";
-$pwd = "mysql";
-$db = new PDO($connection, $user, $pwd);
+require_once("dbConnection.php");
 
 $addType = $_POST["addType"];
-
 
 if($addType == "recipient")
 {

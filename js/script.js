@@ -108,6 +108,7 @@ $("document").ready
         (
             function()
             {
+                $("#billListDiv").hide();
                 var billID = $("#billSelect").val();
                 var dateFrom = $("#earliestDate").val();
                 var dateTo = $("#latestDate").val();

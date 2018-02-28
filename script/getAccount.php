@@ -1,17 +1,9 @@
 <?php
 
-$connection = "mysql:host=localhost;dbname=bdDB_";
-$user = "root";
-$pwd = "mysql";
-$db = new PDO($connection, $user, $pwd);
+require_once("dbConnection.php");
 
 $account = (object) NULL;
-
-
-if(!isset($_POST["id"]))
-    $accountID = 1;
-else    
-    $accountID = $_POST["id"];
+$accountID = $_POST["id"];
 
 $info = $db->query("SELECT accountID, accountNumber, accountNote, "
                         . "companyName, recipientFirstName, recipientLastName "

@@ -1,16 +1,9 @@
 <?php
 
-$connection = "mysql:host=localhost;dbname=bdDB_";
-$user = "root";
-$pwd = "mysql";
-$db = new PDO($connection, $user, $pwd);
+require_once("dbConnection.php");
 
 $bill = (object) NULL;
-
-if(!isset($_POST["id"]))
-    $billID = 1;
-else    
-    $billID = $_POST["id"];
+$billID = $_POST["id"];
 
 $info = $db->query("SELECT billID, accountNumber, companyName, billAmount, "
                         . "billDate, billNote, recipientFirstName, "
