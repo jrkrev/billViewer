@@ -1,3 +1,5 @@
+-- billViewer - creates billViewerDB and billViewerUser user.
+
 DROP DATABASE IF EXISTS billViewerDB;
 
 CREATE DATABASE billViewerDB;

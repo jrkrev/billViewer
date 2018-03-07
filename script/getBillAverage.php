@@ -1,21 +1,10 @@
 <?php
-
 require_once("dbConnection.php");
 
 $bill = (object) NULL;
-
-if(!isset($_POST["id"]) && !isset($_POST["earliest"]) && !isset($_POST["latest"]))
-{
-    $billID = 2;
-    $dateFrom = '1991-01-01';
-    $dateTo = '2018-01-16';
-}
-else
-{
-    $billID = $_POST["id"];
-    $dateFrom = $_POST["earliest"];
-    $dateTo = $_POST["latest"];
-}
+$billID = $_POST["id"];
+$dateFrom = $_POST["earliest"];
+$dateTo = $_POST["latest"];
 
 $avg = $db->query("SELECT ROUND(AVG(billAmount),2) AS _average "
                     . "FROM bill "

@@ -1,12 +1,10 @@
 <?php
-
 require_once("dbConnection.php");
 
 $addType = $_POST["addType"];
 
 if($addType == "recipient")
-{
-        
+{    
         $recipientFirstName = $_POST["recipientFirstName"];
         $recipientLastName = $_POST["recipientLastName"];
         
@@ -15,12 +13,9 @@ if($addType == "recipient")
         
         echo "INSERT INTO recipient VALUES "
                 . "(NULL, '$recipientFirstName', '$recipientLastName')";
-        
 }
-    
 else if($addType == "company")
-{
-        
+{   
         $companyName = $_POST["companyName"];
         $companyDescription = $_POST["companyDescription"];
         $companyContactInfo = $_POST["companyContactInfo"];
@@ -29,12 +24,9 @@ else if($addType == "company")
                 . "(NULL, '$companyName', '$companyDescription', "
                 . "'$companyContactInfo')");
         
-}
-    
+}    
 else if($addType == "account")
-{
-        
-        
+{     
         $accountNumber = $_POST["accountNumber"];
         $accountNote = $_POST["accountNote"];
         $accountCompanyID = $_POST["accountCompanyID"];
@@ -44,11 +36,9 @@ else if($addType == "account")
                 . "'$accountNumber', '$accountNote', CURDATE(), "
                 . "'$accountCompanyID', '$accountRecipientID')");
         
-}
-    
+}  
 else if($addType == "bill")
-{
-        
+{      
         $billAmount = $_POST["billAmount"];
         $billDate = $_POST["billDate"];
         $billNote = $_POST["billNote"];
@@ -56,7 +46,6 @@ else if($addType == "bill")
         
         $addQuery = $db->query("INSERT INTO bill VALUES "
                 . "(NULL, $billAmount, '$billDate', '$billNote', "
-                . "'$billAccountID')");         
-        
+                . "'$billAccountID')");             
 }
 

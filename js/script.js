@@ -1,5 +1,5 @@
-/* todo: customize how the select options appear, dynamically generate
- * based on which checkbox is select... 
+/* billViewer - JavaScript to retrieve and update information from
+ * the database and update the pages using JQuery and Ajax.
  */
 
 $("document").ready
@@ -266,7 +266,6 @@ $("document").ready
                 );
             }
         );
-
 
         // Add Page
         
@@ -610,7 +609,6 @@ function clearDeleteError()
     $("#deleteError").html("");
 }
 
-
 function resetAddInputs()
 {
     clearInputError();
@@ -668,18 +666,15 @@ function loadAddPage()
 
     switch($("#addType").val())
     {
-        case "recipient":
-                        
+        case "recipient":                    
             $("#addRecipientDiv").show();
             break;
                         
-        case "company":
-                     
+        case "company":             
             $("#addCompanyDiv").show();
             break;
                         
-        case "account":
-                        
+        case "account":                      
             $.ajax
             (
                 {
@@ -700,8 +695,7 @@ function loadAddPage()
             $("#addAccountDiv").show();
             break;
                         
-        case "bill":
-                        
+        case "bill":                   
             $.ajax
             (
                 {

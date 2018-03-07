@@ -1,5 +1,4 @@
 <?php
-
 require_once("dbConnection.php");
 
 $billID = $_POST["billID"];

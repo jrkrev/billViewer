@@ -1,5 +1,4 @@
 <?php
-
 require_once("dbConnection.php");
 
 $dates = (object) NULL;

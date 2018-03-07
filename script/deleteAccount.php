@@ -1,5 +1,4 @@
 <?php
-
 require_once("dbConnection.php");
 
 $accountID = $_POST["accountID"];

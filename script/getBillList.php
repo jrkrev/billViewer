@@ -1,8 +1,6 @@
 <?php
-
 require_once("dbConnection.php");
 
-  
 $billID = $_POST["id"];
 $dateFrom = $_POST["earliest"];
 $dateTo = $_POST["latest"];

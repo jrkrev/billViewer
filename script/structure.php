@@ -1,4 +1,5 @@
 <?php
+// This script contains the functions to create the title and navigation bars.
 
 function CreateTitleBar()
 {
